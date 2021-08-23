@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-success"
+        type="button"
+        style="margin: 5px"
+        (click)="onRecipeSave()"
+      >
+        Save
+      </button>
+      <button
+        class="btn btn-danger"
+        type="button"
+        style="margin: 5px"
+        (click)="onCencel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-group">
+      <span class="input-group-addon">Name</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Name of the recipe"
+        [(ngModel)]="recipe.name"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-group">
+      <span class="input-group-addon">Description</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Amount (rounded to the nearest dollar)"
+        [(ngModel)]="recipe.description"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-group">
+      <span class="input-group-addon">Image path</span>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Amount (rounded to the nearest dollar)"
+        [(ngModel)]="recipe.imagePath"
+      />
+    </div>
+    <div
+      class="row"
+      *ngFor="let ing of recipe.Ingredients; let i = index"
+      style="margin-top: 10px; margin: 10px"
+    >
+      <div class="col-xs-12" id="div_{{ i }}">
+        <div class="row">
+          <div class="col-xs-8">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="ing.name"
+              id="inputName_{{ i }}"
+            />
+          </div>
+          <div class="col-xs-2">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="ing.amount"
+              id="inputAmount_{{ i }}"
+            />
+          </div>
+          <div class="col-xs-2">
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="button_{{ i }}"
+              (click)="OnIngredientsRemove(i, recipeIndex)"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success" (click)="onAddIngredients()">
+    Add ingredient
+  </button>
+</div>
